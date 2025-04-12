@@ -402,7 +402,7 @@
       <h1>WELCOME</h1>
       <p class="delay-1">I'M BHAVESH GUPTA, A BTECH CSE STUDENT</p>
       <div class="delay-2">
-        <a href="#work" class="btn btn-primary">ABOUT ME</a>
+        <a href="#about" class="btn btn-primary">ABOUT ME</a>
         <a href="#contact" class="btn btn-secondary">CONTACT ME</a>
       </div>
     </div>
@@ -529,10 +529,23 @@
       <p class="animate delay-1">Have a project in mind or want to discuss potential opportunities? Get in touch!</p>
       
       <form id="contact-form">
-        <input type="text" name="from_name" placeholder="Your Name" required>
-        <input type="email" name="reply_to" placeholder="Your Email" required>
-        <textarea name="message" placeholder="Your Message" required></textarea>
+        <div class="form-group">
+          <label for="from_name">Your Name</label>
+          <input type="text" id="from_name" name="from_name" placeholder="Enter Name" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="reply_to">Your Email</label>
+          <input type="email" id="reply_to" name="reply_to" placeholder="Enter mail" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="message">Your Message</label>
+          <textarea id="message" name="message" placeholder="Type your message here..." required></textarea>
+        </div>
+  
         <button type="submit">Send Message</button>
+        <div class="success-message" id="success-msg">Thanks! Your message has been sent.</div>
       </form>
     </div>
   </section>
