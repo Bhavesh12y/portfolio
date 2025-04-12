@@ -1,0 +1,126 @@
+/* Base Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    transition: background 0.3s ease, color 0.3s ease;
+    padding: 1rem;
+  }
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  /* Variables */
+  :root {
+    --bg: #ffffff;
+    --text: #111111;
+    --accent: #007bff;
+    --card-bg: #f5f5f5;
+    --button-bg: #007bff;
+    --button-text: #ffffff;
+  }
+  
+  .dark {
+    --bg: #121212;
+    --text: #f1f1f1;
+    --card-bg: #1e1e1e;
+    --button-bg: #0d6efd;
+    --button-text: #ffffff;
+  }
+  
+  /* Theme Toggle Button */
+  .theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+    color: var(--text);
+  }
+  
+  /* Hero Section */
+  .hero {
+    text-align: center;
+    padding: 6rem 1rem 4rem;
+  }
+  
+  .glow-text {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-shadow: 0 0 10px var(--accent);
+  }
+  
+  .tagline {
+    font-size: 1.25rem;
+    margin-top: 1rem;
+    color: var(--text);
+  }
+  
+  .hover-glow {
+    color: var(--accent);
+    transition: text-shadow 0.3s;
+  }
+  
+  .hover-glow:hover {
+    text-shadow: 0 0 8px var(--accent);
+  }
+  
+  /* Button Styles */
+  .cta-button {
+    display: inline-block;
+    margin-top: 2rem;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    padding: 0.75rem 1.5rem;
+    border-radius: 999px;
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+  }
+  
+  .pulse {
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(0,123,255,0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(0,123,255,0); }
+    100% { box-shadow: 0 0 0 0 rgba(0,123,255,0); }
+  }
+  
+  /* Projects Section */
+  .projects {
+    padding: 4rem 1rem;
+    text-align: center;
+  }
+  
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .project-card {
+    background-color: var
+  
