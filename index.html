@@ -149,6 +149,21 @@
       animation: rotate 20s linear infinite;
     }
 
+    .social-links a {
+  display: inline-block;
+  margin: 0 12px;
+  color: #a68eff; /* Soft purple matching theme */
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #d3bfff; /* Slightly lighter on hover */
+  text-shadow: 0 0 6px rgba(163, 128, 255, 0.3); /* Subtle soft glow */
+}
+
+
     @keyframes rotate {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
@@ -333,6 +348,8 @@
   transition: background-color 0.3s ease;
 }
 
+
+
 #contact button[type="submit"]:hover {
   background-color: #0056b3;
 }
@@ -428,6 +445,14 @@
         <a href="#contact" class="btn btn-secondary">CONTACT ME</a>
       </div>
     </div>
+
+    <div class="container">
+      <div class="social-links">
+        <a href="https://github.com/bhavesh12y" class="social-link animate"  id="socialmedia">GitHub</a>
+        <a href="http://www.linkedin.com/in/bhavesh12z" class="social-link animate delay-1" id="socialmedia">LinkedIn</a>
+        <a href="https://x.com/Bhavesh12g" class="social-link animate delay-2" id="socialmedia">Twitter</a>
+        <a href="https://www.instagram.com/bhavesh12z/" class="social-link animate delay-3" id="socialmedia">Instagram</a>
+      </div>
   </section>
 
   <!-- Work Section -->
@@ -439,7 +464,7 @@
       <div class="projects-grid">
         <!-- Project 1 -->
         <div class="project-card animate delay-1">
-          <img src="ETHYLEN'.png" alt="Project 1" class="project-img">
+          <!-- <img src="ETHYLEN'.png" alt="Project 1" class="project-img"> -->
           <div class="project-content">
             <h3>ETHYLENE ADSORBER</h3>
             <div class="project-tags">
@@ -447,8 +472,11 @@
               <span class="tag">ARDUINO IDE</span>
               <span class="tag">TINKERCAD</span>
             </div>
-            <p>A SOLUTION TO ENHANCE SHELF LIFE OF PERISHABLE FRUITS </p>
-            <a href="#" class="btn btn-secondary" style="margin-top: 1rem;">View Case Study</a>
+            <p>An IoT solution to enhance shelf life of perishable fruits by reducing ethylene gas concentration.
+
+              Ethylene gas is a natural plant hormone that accelerates ripening and decay in fruits. My team developed an IoT-based ethylene adsorption system that monitors and reduces ethylene concentration in storage environments, significantly extending the shelf life of perishable fruits
+            </p>
+            <a href="https://www.linkedin.com/posts/bhavesh12z_working-on-a-project-ethylene-adsorber-activity-7316039917237608448-yftj?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEZ03cUBnSaALxfhcR9U8TEV55NjK-Cypxo" class="btn btn-secondary" style="margin-top: 1rem;">MORE INFO</a>
           </div>
         </div>
         
