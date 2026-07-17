@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg: #000000;
+            --bg: #07090e;
             --surface: #12151c; /* Slightly lightened to match your reference image */
             --surface-hover: #1a1e27;
             --border: #1e2637;
@@ -45,7 +45,7 @@
             content: '';
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
             background-size: 32px 32px;
             z-index: -2;
             pointer-events: none;
@@ -91,6 +91,7 @@
             top: 25%; right: 15%;
             animation-delay: -2s;
         }
+        /* New Doodles */
         .doodle-ring {
             width: 140px; height: 140px; border-radius: 50%;
             border: 8px solid var(--accent-pink);
@@ -308,7 +309,7 @@
             margin-bottom: 0.5rem;
         }
 
-       /* Experience Section */
+        /* Experience Section */
         #experience {
             padding: 5rem 0;
         }
@@ -316,7 +317,7 @@
             display: grid;
             gap: 1.5rem;
         }
-        a.exp-card {
+        .exp-card {
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 20px;
@@ -328,9 +329,8 @@
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
-            cursor: pointer;
         }
-        a.exp-card::before {
+        .exp-card::before {
             content: '';
             position: absolute;
             top: 0; left: 0; width: 4px; height: 100%;
@@ -338,13 +338,13 @@
             opacity: 0;
             transition: opacity 0.3s;
         }
-        a.exp-card:hover {
+        .exp-card:hover {
             background: var(--surface-hover);
             border-color: var(--border-hover);
             transform: translateY(-4px);
             box-shadow: var(--shadow);
         }
-        a.exp-card:hover::before { opacity: 1; }
+        .exp-card:hover::before { opacity: 1; }
         
         .exp-icon {
             width: 60px; height: 60px;
@@ -354,11 +354,6 @@
             display: flex; align-items: center; justify-content: center;
             font-size: 1.5rem;
             color: var(--accent-2);
-        }
-        a.exp-card:hover .exp-icon {
-            background: rgba(6, 182, 212, 0.1);
-            color: #fff;
-            border-color: var(--accent-2);
         }
         .exp-info h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.2rem; }
         .exp-info h4 { color: var(--accent-1); font-weight: 600; font-size: 0.9rem; margin-bottom: 0.8rem; }
@@ -385,46 +380,7 @@
             align-self: start;
         }
 
-        #github {
-            padding: 5rem 0;
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-        .github-wrapper {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 2.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            align-items: center;
-            box-shadow: var(--shadow);
-        }
-        .github-wrapper img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 12px;
-        }
-        .github-stats-row {
-            display: flex;
-            gap: 1.5rem;
-            width: 100%;
-            justify-content: center;
-        }
-        .github-stats-row img {
-            width: calc(50% - 0.75rem);
-        }
-        .github-divider {
-            margin-top: 1rem;
-            opacity: 0.8;
-            transition: 0.3s;
-        }
-        .github-divider:hover {
-            opacity: 1;
-        }
-
-        /* Projects Section (Dynamic and Cool) */
+        /* Projects Section */
         #projects {
             padding: 5rem 0;
         }
@@ -434,86 +390,40 @@
             gap: 1.5rem;
         }
         .project-card {
-            background: rgba(255, 255, 255, 0.04); /* Glassmorphism */
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: var(--surface);
+            border: 1px solid var(--border);
             border-radius: 24px;
             padding: 2.2rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
-            cursor: default;
-            perspective: 800px; /* For 3D Tilt */
         }
-        
         .project-card.featured {
             grid-column: span 2;
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(6, 182, 212, 0.02));
-            border-color: rgba(139, 92, 246, 0.15);
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.06), var(--surface));
         }
-        .project-card.featured:hover {
-            border-color: rgba(139, 92, 246, 0.6);
-        }
-
-        /* Pseudo for Rotating Glowing Border */
-        .project-card::before {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            background: conic-gradient(from 0deg, transparent 0deg, rgba(139, 92, 246, 0.4) 60deg, transparent 120deg, rgba(6, 182, 212, 0.4) 180deg, transparent 240deg, transparent 360deg);
-            border-radius: 25px;
-            opacity: 0;
-            transition: opacity 0.6s ease;
-            z-index: -1;
-            animation: spinGlow 6s linear infinite;
-        }
-        
-        @keyframes spinGlow {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Pseudo for Base Card Background */
-        .project-card::after {
-            content: '';
-            position: absolute;
-            inset: 1px;
-            background: var(--surface); /* Card background hiding the gradient */
-            border-radius: 23px;
-            z-index: -1;
-        }
-
         .project-card:hover {
-            transform: translateY(-8px) scale(1.02) rotateX(2deg) rotateY(4deg);
-            box-shadow: 0 20px 40px -12px rgba(139, 92, 246, 0.4);
-            border-color: transparent;
+            border-color: var(--accent-1);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
         }
-        .project-card:hover::before {
-            opacity: 1;
-        }
-
         .project-top {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
             margin-bottom: 1.5rem;
-            z-index: 1;
         }
         .project-icon {
             width: 50px; height: 50px;
-            background: rgba(255, 255, 255, 0.03);
+            background: var(--bg);
             border-radius: 14px;
             display: flex; align-items: center; justify-content: center;
             font-size: 1.3rem;
             color: var(--accent-1);
             border: 1px solid var(--border);
-        }
-        .project-card:hover .project-icon { 
-            background: rgba(139, 92, 246, 0.1); 
-            color: #fff; 
         }
         .project-external {
             width: 40px; height: 40px;
@@ -522,17 +432,11 @@
             display: flex; align-items: center; justify-content: center;
             color: var(--text-secondary);
             border: 1px solid var(--border);
-            transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .project-card:hover .project-external { 
-            background: var(--accent-1); 
-            color: #fff; 
-            border-color: var(--accent-1);
-            transform: translateY(-3px) scale(1.1);
-        }
+        .project-card:hover .project-external { background: var(--accent-1); color: #fff; border-color: var(--accent-1); }
         
-        .project-content h3 { font-size: 1.35rem; font-weight: 700; margin-bottom: 0.6rem; z-index: 1; position: relative; }
-        .project-content p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem; z-index: 1; position: relative; }
+        .project-content h3 { font-size: 1.35rem; font-weight: 700; margin-bottom: 0.6rem; }
+        .project-content p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem; }
         
         .project-footer {
             display: flex;
@@ -541,65 +445,71 @@
             border-top: 1px solid var(--border);
             padding-top: 1.2rem;
             margin-top: auto;
-            z-index: 1;
-            position: relative;
         }
         .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-        .project-tags span { font-size: 0.75rem; font-weight: 600; color: var(--text-secondary); background: rgba(255,255,255,0.03); padding: 0.2rem 0.6rem; border-radius: 6px; border: 1px solid var(--border); }
+        .project-tags span { font-size: 0.75rem; font-weight: 600; color: var(--text-secondary); background: rgba(255,255,255,0.03); padding: 0.2rem 0.6rem; border-radius: 6px; }
         .project-links { display: flex; gap: 1rem; }
         .project-links a { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); display: flex; align-items: center; gap: 0.4rem; }
         .project-links a:hover { color: var(--accent-1); }
 
-        /* Skills Section (Dark Theme Consistent) */
-        #skills{
-    padding:120px 0;
-}
-
-.skills-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-    gap:24px;
-    margin-top:60px;
-}
-
-.skill-card{
-    background:rgba(255,255,255,.03);
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:20px;
-    padding:30px 20px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:18px;
-    transition:.35s ease;
-    backdrop-filter:blur(15px);
-}
-
-.skill-card:hover{
-    transform:translateY(-8px);
-    border-color:var(--accent);
-    box-shadow:0 20px 45px rgba(0,255,255,.12);
-}
-
-.skill-card img{
-    width:48px;
-    height:48px;
-    object-fit:contain;
-}
-
-.skill-card span{
-    font-size:.95rem;
-    font-weight:600;
-    color:var(--text-primary);
-}
-
-        /* Grid Positioning Classes */
-        .s-1 { grid-area: s1; } .s-2 { grid-area: s2; } .s-3 { grid-area: s3; }
-        .s-4 { grid-area: s4; } .s-5 { grid-area: s5; } .s-6 { grid-area: s6; }
-        .s-7 { grid-area: s7; } .s-8 { grid-area: s8; } .s-9 { grid-area: s9; }
-        .s-10 { grid-area: s10; } .s-11 { grid-area: s11; } .s-12 { grid-area: s12; }
-        .txt-1 { grid-area: txt1; } .txt-2 { grid-area: txt2; } .txt-3 { grid-area: txt3; }
+        /* Updated Skills Section (Bento Grid matching your reference) */
+        #skills {
+            padding: 5rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.2rem;
+        }
+        .skill-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.8rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .skill-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-5px);
+            background: var(--surface-hover);
+        }
+        .skill-icon-wrap {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.2rem;
+            width: 34px; height: 34px;
+            background: rgba(6, 182, 212, 0.08); /* Faded Cyan */
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--accent-2); /* Cyan */
+            font-size: 1.1rem;
+        }
+        .skill-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--text-primary);
+            padding-top: 1rem;
+        }
+        .skill-card p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+        .skill-tag {
+            color: var(--accent-1); /* Purple */
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
 
         /* Contact Section */
         #contact {
@@ -688,33 +598,6 @@
             .nav-links.active { display: flex; }
             .mobile-toggle { display: block; }
             .contact-box { padding: 2rem 1.5rem; }
-            
-            .arsenal-collage {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-                grid-template-areas:
-                    "txt1 txt1"
-                    "s1 s2"
-                    "txt2 txt2"
-                    "s3 s4"
-                    "s5 s6"
-                    "txt3 txt3"
-                    "s7 s8"
-                    "s9 s10"
-                    "s11 s12";
-                grid-auto-rows: minmax(140px, auto);
-            }
-            .collage-item i { font-size: 2.5rem; }
-            .collage-text { font-size: clamp(3rem, 12vw, 4.5rem); }
-        }
-
-        @media (max-width: 480px) {
-            .arsenal-collage {
-                gap: 0.8rem;
-                grid-auto-rows: minmax(100px, auto);
-            }
-            .collage-item i { font-size: 2rem; }
-            .collage-item span { font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -741,7 +624,7 @@
                 <ul class="nav-links">
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#projects">Work</a></li>
-                    <li><a href="#skills-arsenal">Skills</a></li>
+                    <li><a href="#skills">Skills</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -754,10 +637,12 @@
             <div class="container">
                 <div class="hero-grid">
                     <div class="hero-content reveal">
-                       
-                        <h1>Crafting Data-Driven <br><span class="gradient-text"> Applications.</span></h1>
+                        <div class="pill">
+                            <span class="dot-pulse"></span> Available for Internships
+                        </div>
+                        <h1>Crafting Data-Driven <br><span class="gradient-text">Web Applications.</span></h1>
                         <p>
-                            I'm <strong>Bhavesh Gupta</strong>, a B.Tech Computer Science student specializing in full-stack development, 
+                            I'm <strong>Bhavesh</strong>, a B.Tech Computer Science student specializing in full-stack development, 
                             interactive user interfaces, and scalable real-world systems.
                         </p>
                         <div class="hero-cta">
@@ -778,14 +663,14 @@
                     <div class="hero-visual reveal" style="transition-delay: 0.2s;">
                         <div class="avatar-wrapper">
                             <div class="avatar-ring"></div>
-                            <img src="bhavi1.jpg" alt="Bhavesh Gupta" class="avatar-img">
+                            <img src="bhavesh.jpg" alt="Bhavesh Gupta" class="avatar-img">
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-       <!-- Experience Section -->
+        <!-- Experience Section -->
         <section id="experience">
             <div class="container">
                 <div class="section-header reveal">
@@ -794,62 +679,52 @@
                 </div>
                 
                 <div class="exp-grid">
-                    <!-- Item 1: C-DOT -->
-                    <a href="experience-cdot.html" class="exp-card reveal">
-                        <div class="exp-icon"></div>
+                    <!-- Item 1 -->
+                    <div class="exp-card reveal">
+                        <div class="exp-icon"><i class="fa-solid fa-chart-line"></i></div>
                         <div class="exp-info">
-                            <h3>Tech Intern</h3>
-                            <h4>C-DOT • June 2026 - July 2026</h4>
-                            <p>Worked on Layer 1 Encryption module.</p>
+                            <h3>Data Analyst Intern</h3>
+                            <h4>TechCorp Solutions</h4>
+                            <p>Cleaned and analyzed large datasets using Python and Pandas to extract actionable insights. Built dynamic reporting dashboards for stakeholders.</p>
                             <div class="exp-tags">
-                                <span>C</span><span>C++</span><span>Socket Programming</span><span>Linux Env</span>
+                                <span>Python</span><span>Pandas</span><span>SQL</span><span>Data Viz</span>
                             </div>
                         </div>
-                        <span class="exp-badge">Current</span>
-                    </a>
+                        <span class="exp-badge">Completed</span>
+                    </div>
 
-                    <!-- Item 2: Sci-Mat -->
-                    <a href="experience-scimat.html" class="exp-card reveal" style="transition-delay: 0.1s;">
-                        <div class="exp-icon"></div>
+                    <!-- Item 2 -->
+                    <div class="exp-card reveal" style="transition-delay: 0.1s;">
+                        <div class="exp-icon"><i class="fa-solid fa-layer-group"></i></div>
                         <div class="exp-info">
-                            <h3>Design Lead</h3>
-                            <h4>Sci-Mat BMU • Aug 2025 - May 2026</h4>
-                            <p>Designed assets for several tech events, hackathons, and cross-club initiatives.</p>
+                            <h3>Full Stack Developer Trainee</h3>
+                            <h4>CodeLabs Innovations</h4>
+                            <p>Designed and built robust backend microservices with Node.js & Express while integrating reactive front-end modules with MongoDB databases.</p>
                             <div class="exp-tags">
-                                <span>Figma</span><span>Canva</span><span>Photoshop</span>
+                                <span>React</span><span>Node.js</span><span>Express</span><span>MongoDB</span>
+                            </div>
+                        </div>
+                        <span class="exp-badge">Completed</span>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="exp-card reveal" style="transition-delay: 0.2s;">
+                        <div class="exp-icon"><i class="fa-solid fa-chess-queen"></i></div>
+                        <div class="exp-info">
+                            <h3>Chess Captain</h3>
+                            <h4>BML Munjal University</h4>
+                            <p>Led the university chess team to regional tournaments, organized competitive inter-college events, and mentored peers in strategic thinking.</p>
+                            <div class="exp-tags">
+                                <span>Leadership</span><span>Strategy</span><span>Event Management</span>
                             </div>
                         </div>
                         <span class="exp-badge" style="background: rgba(139, 92, 246, 0.1); color: var(--accent-1); border-color: rgba(139, 92, 246, 0.2);">Leadership</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section id="github">
-            <div class="container">
-                <div class="section-header reveal">
-                    <span class="section-subtitle">Open Source</span>
-                    <h2 class="section-title">GitHub <span class="gradient-text">Contributions</span></h2>
-                </div>
-                
-                <div class="github-wrapper reveal">
-                    <img src="https://github-readme-activity-graph.vercel.app/graph?username=bhavesh12y&bg_color=07111F&color=67E8F9&line=8B5CF6&point=FFFFFF&hide_border=true" alt="Contribution Graph" />
-                    
-                    <div class="github-stats-row">
-                        <img src="https://github-readme-stats.shion.dev/api?username=bhavesh12y&theme=radical&hide_border=false&include_all_commits=true&count_private=true" alt="GitHub Stats" />
-                        <img src="https://github-readme-streak-stats-eight.vercel.app?user=Bhavesh12y&theme=radical&hide_border=false" alt="Streak" />
                     </div>
-
-                    <img src="https://raw.githubusercontent.com/Bhavesh12y/Bhavesh12y/output/github-contribution-grid-snake-dark.svg" alt="Contribution Snake" />
-
-                    <a href="https://github.com/bhavesh12y" class="github-divider" target="_blank">
-                        <img src="https://raw.githubusercontent.com/HiradEmami/readme-ux-kit/master/assets/dividers/animated/bars/divider_dual_energy_tracks.svg" alt="divider" style="max-width: 400px;">
-                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- Projects Section (Dynamic UI) -->
+        <!-- Projects Section -->
         <section id="projects">
             <div class="container">
                 <div class="section-header reveal">
@@ -946,112 +821,101 @@
             </div>
         </section>
 
+        <!-- New Skills Section (Bento Grid) -->
         <section id="skills">
-    <div class="container">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-subtitle">Toolkit</span>
+                    <h2 class="section-title">Technical <span class="gradient-text">Skills</span></h2>
+                </div>
 
-        <div class="section-header reveal">
-            <span class="section-subtitle">Expertise</span>
-            <h2 class="section-title">
-                My <span class="gradient-text">Tech Stack</span>
-            </h2>
-        </div>
+                <div class="skills-grid">
+                    <div class="skill-card reveal">
+                        <div class="skill-icon-wrap"><i class="fa-solid fa-c"></i></div>
+                        <h3>C Language</h3>
+                        <p>Achieved A+ grade in Sem 1. Strong command over pointers, memory management, and low-level system logic.</p>
+                        <span class="skill-tag">Core</span>
+                    </div>
 
-        <div class="skills-grid">
+                    <div class="skill-card reveal" style="transition-delay: 0.05s;">
+                        <div class="skill-icon-wrap"><i class="fa-solid fa-code"></i></div>
+                        <h3>C++ & DSA</h3>
+                        <p>Focusing on Data Structures & Algorithms. Bridging low-level efficiency with object-oriented principles.</p>
+                        <span class="skill-tag">Logic</span>
+                    </div>
 
-            <div class="skill-card reveal">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" alt="C++">
-                <span>C++</span>
+                    <div class="skill-card reveal" style="transition-delay: 0.1s;">
+                        <div class="skill-icon-wrap"><i class="fa-brands fa-java"></i></div>
+                        <h3>Java</h3>
+                        <p>Specialized in OOP concepts. Building robust, scalable systems with strict type safety and inheritance.</p>
+                        <span class="skill-tag">OOP</span>
+                    </div>
+
+                    <div class="skill-card reveal" style="transition-delay: 0.15s;">
+                        <div class="skill-icon-wrap"><i class="fa-brands fa-python"></i></div>
+                        <h3>Python</h3>
+                        <p>A+ Grade proficiency. Used for rapid scripting, automation, and backend logic integration.</p>
+                        <span class="skill-tag">Scripting</span>
+                    </div>
+
+                    <div class="skill-card reveal" style="transition-delay: 0.2s;">
+                        <div class="skill-icon-wrap"><i class="fa-solid fa-chart-line"></i></div>
+                        <h3>Data Analytics</h3>
+                        <p>Data cleaning and visualization using Pandas and Matplotlib. Extracting actionable insights from raw data.</p>
+                        <span class="skill-tag">Analysis</span>
+                    </div>
+
+                    <div class="skill-card reveal" style="transition-delay: 0.25s;">
+                        <div class="skill-icon-wrap"><i class="fa-brands fa-html5"></i></div>
+                        <h3>HTML5</h3>
+                        <p>Semantic markup, accessibility standards, and SEO best practices for modern web structure.</p>
+                        <span class="skill-tag">Frontend</span>
+                    </div>
+
+                    <div class="skill-card reveal" style="transition-delay: 0.3s;">
+                        <div class="skill-icon-wrap"><i class="fa-brands fa-css3-alt"></i></div>
+                        <h3>CSS3</h3>
+                        <p>Advanced animations, Flexbox, Grid layouts, and responsive design for fluid user interfaces.</p>
+                        <span class="skill-tag">Style</span>
+                    </div>
+
+                    <div class="skill-card reveal" style="transition-delay: 0.35s;">
+                        <div class="skill-icon-wrap"><i class="fa-brands fa-js"></i></div>
+                        <h3>JavaScript</h3>
+                        <p>ES6+ syntax, DOM manipulation, and asynchronous programming. The engine behind dynamic web apps.</p>
+                        <span class="skill-tag">Interactive</span>
+                    </div>
+
+                    <div class="skill-card reveal" style="transition-delay: 0.4s;">
+                        <div class="skill-icon-wrap"><i class="fa-brands fa-react"></i></div>
+                        <h3>React</h3>
+                        <p>Component-based architecture, Hooks, Redux Toolkit, and Next.js for scalable frontend applications.</p>
+                        <span class="skill-tag">Frontend</span>
+                    </div>
+
+                    <div class="skill-card reveal" style="transition-delay: 0.45s;">
+                        <div class="skill-icon-wrap"><i class="fa-solid fa-server"></i></div>
+                        <h3>MERN Stack</h3>
+                        <p>Backend development with Node.js and database management using MongoDB aggregation pipelines.</p>
+                        <span class="skill-tag">Backend</span>
+                    </div>
+
+                    <div class="skill-card reveal" style="transition-delay: 0.5s;">
+                        <div class="skill-icon-wrap"><i class="fa-solid fa-compass-drafting"></i></div>
+                        <h3>AutoCAD</h3>
+                        <p>Proficient in layouts. Designed schematics for the 'Ethylene Adsorber' project during Joy of Engineering course.</p>
+                        <span class="skill-tag">Design</span>
+                    </div>
+
+                    <div class="skill-card reveal" style="transition-delay: 0.55s;">
+                        <div class="skill-icon-wrap"><i class="fa-brands fa-figma"></i></div>
+                        <h3>Figma</h3>
+                        <p>Design Lead at Scimat Club. Prototyping high-fidelity UIs and creating collaborative design systems.</p>
+                        <span class="skill-tag">Design</span>
+                    </div>
+                </div>
             </div>
-
-            <div class="skill-card reveal">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="Java">
-                <span>Java</span>
-            </div>
-
-            <div class="skill-card reveal">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python">
-                <span>Python</span>
-            </div>
-
-            <div class="skill-card reveal">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="JavaScript">
-                <span>JavaScript</span>
-            </div>
-
-            <div class="skill-card reveal">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" alt="HTML">
-                <span>HTML5</span>
-            </div>
-
-            <div class="skill-card reveal">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg" alt="CSS">
-                <span>CSS3</span>
-            </div>
-
-            <div class="skill-card reveal">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" alt="React">
-                <span>React</span>
-            </div>
-
-            <div class="skill-card reveal">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg" alt="Node">
-                <span>Node.js</span>
-            </div>
-
-            <div class="skill-card reveal">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg" alt="MongoDB">
-                <span>MongoDB</span>
-            </div>
-
-            <div class="skill-card reveal">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/firebase/firebase-plain.svg" alt="Firebase">
-                <span>Firebase</span>
-            </div>
-
-            <div class="skill-card reveal">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/pandas/pandas-original.svg" alt="Pandas">
-                <span>Pandas</span>
-            </div>
-
-            <div class="skill-card reveal">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" alt="Git">
-                <span>Git</span>
-            </div>
-
-            <div class="skill-card reveal">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg" alt="GitHub">
-                <span>GitHub</span>
-            </div>
-
-            <div class="skill-card reveal">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/figma/figma-original.svg" alt="Figma">
-                <span>Figma</span>
-            </div>
-
-            <div class="skill-card reveal">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/android/android-original.svg" alt="Android">
-                <span>Android</span>
-            </div>
-
-            <div class="skill-card reveal">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" alt="C">
-                <span>C</span>
-            </div>
-
-            <div class="skill-card reveal">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" alt="Linux">
-                <span>Linux</span>
-            </div>
-
-            <div class="skill-card reveal">
-                <i class="fa-solid fa-network-wired skill-icon"></i>
-                <span>Socket Programming</span>
-            </div>
-
-        </div>
-
-    </div>
-</section>
+        </section>
 
         <!-- Contact Section -->
         <section id="contact">

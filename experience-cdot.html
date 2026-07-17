@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Lead - Sci-Mat | Bhavesh Gupta</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #07090e;
+            --surface: #12151c;
+            --surface-hover: #1a1e27;
+            --border: #1e2637;
+            --border-hover: #334155;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-1: #8b5cf6;
+            --accent-2: #06b6d4;
+            --accent-pink: #ec4899;
+            --font: 'Plus Jakarta Sans', sans-serif;
+            --shadow: 0 20px 40px -15px rgba(0,0,0,0.7);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg); color: var(--text-primary);
+            font-family: var(--font); line-height: 1.6; overflow-x: hidden;
+        }
+
+        /* Subtle Grid Pattern Overlay */
+        body::before {
+            content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 32px 32px; z-index: -2; pointer-events: none;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+        a { text-decoration: none; color: inherit; transition: 0.3s ease; }
+        .gradient-text {
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        /* Navigation */
+        header {
+            position: sticky; top: 0; background: rgba(7, 9, 14, 0.85);
+            backdrop-filter: blur(16px); border-bottom: 1px solid var(--border);
+            padding: 1.2rem 0; z-index: 100;
+        }
+        .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 800; font-size: 1.4rem; color: #fff; }
+        .logo .dot { color: var(--accent-1); }
+        .back-btn {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            color: var(--text-secondary); font-weight: 600; font-size: 0.9rem;
+        }
+        .back-btn:hover { color: #fff; }
+
+        /* Page Header */
+        .page-header { padding: 5rem 0 3rem; text-align: center; }
+        .page-title { font-size: 3.5rem; font-weight: 800; margin-bottom: 1rem; letter-spacing: -1px; }
+        .page-subtitle { font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 2.5rem; }
+        
+        /* Tools / Icons Row */
+        .tools-row {
+            display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 4rem;
+        }
+        .tool-badge {
+            background: var(--surface); border: 1px solid var(--border);
+            padding: 0.6rem 1.2rem; border-radius: 12px;
+            display: flex; align-items: center; gap: 0.5rem;
+            font-size: 0.9rem; font-weight: 600; color: var(--text-primary);
+        }
+        .tool-badge i { font-size: 1.2rem; }
+
+        /* 3D Collage Section */
+        .collage-section { padding: 2rem 0 5rem; }
+        .section-heading { font-size: 2rem; font-weight: 800; margin-bottom: 2rem; }
+        
+        .collage-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-auto-rows: 250px;
+            gap: 1.5rem;
+            perspective: 1200px; /* Enables the 3D space */
+        }
+        
+        .collage-item {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            transform-style: preserve-3d;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: pointer;
+        }
+        
+        .collage-item img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.5s;
+            opacity: 0.8;
+        }
+        
+        .collage-item .overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            display: flex; align-items: flex-end; padding: 1.5rem;
+            opacity: 0; transition: 0.4s;
+        }
+
+        .collage-item h4 { font-size: 1.2rem; font-weight: 700; transform: translateZ(30px); }
+
+        /* 3D Hover Effects */
+        .collage-item:hover {
+            transform: rotateX(5deg) rotateY(-5deg) scale(1.02);
+            border-color: var(--accent-1);
+            box-shadow: -10px 20px 30px rgba(139, 92, 246, 0.2);
+            z-index: 10;
+        }
+        .collage-item:hover img { transform: scale(1.1); opacity: 1; }
+        .collage-item:hover .overlay { opacity: 1; }
+
+        /* Masonry Grid Spans */
+        .item-large { grid-column: span 8; grid-row: span 2; }
+        .item-tall { grid-column: span 4; grid-row: span 2; }
+        .item-wide { grid-column: span 6; grid-row: span 1; }
+        .item-box { grid-column: span 6; grid-row: span 1; }
+
+        /* Events Section */
+        .events-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;
+            margin-bottom: 5rem;
+        }
+        .event-card {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 20px; padding: 2rem;
+            display: flex; flex-direction: column; transition: 0.3s;
+        }
+        .event-card:hover { transform: translateY(-5px); border-color: var(--accent-2); background: var(--surface-hover); }
+        .event-card h3 { font-size: 1.4rem; margin-bottom: 0.5rem; font-weight: 800; }
+        .event-card p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1; }
+        .btn-outline {
+            align-self: flex-start;
+            padding: 0.6rem 1.2rem; border-radius: 10px;
+            border: 1px solid var(--border); color: var(--text-primary);
+            font-size: 0.9rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem;
+        }
+        .event-card:hover .btn-outline { border-color: var(--accent-2); color: var(--accent-2); }
+
+        @media (max-width: 900px) {
+            .collage-grid { display: flex; flex-direction: column; }
+            .collage-item { height: 300px; }
+            .page-title { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="index.html" class="logo">Bhavesh<span class="dot">.</span></a>
+            <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Page Header -->
+        <section class="page-header">
+            <h1 class="page-title">Design Lead <span class="gradient-text">@ Sci-Mat BMU</span></h1>
+            <p class="page-subtitle">
+                Spearheaded the visual identity, merchandise, and branding for flagship university tech events, hackathons, and cross-club initiatives. 
+            </p>
+            
+            <!-- Tools Row -->
+            <div class="tools-row">
+                <div class="tool-badge"><i class="fa-brands fa-figma" style="color:#f24e1e;"></i> Figma</div>
+                <div class="tool-badge"><i class="fa-solid fa-pen-nib" style="color:#ff7c00;"></i> Illustrator</div>
+                <div class="tool-badge"><i class="fa-solid fa-cube" style="color:#8b5cf6;"></i> Spline 3D</div>
+                <div class="tool-badge"><i class="fa-solid fa-palette" style="color:#06b6d4;"></i> Canva Pro</div>
+            </div>
+        </section>
+
+        <!-- 3D Dynamic Merch & Asset Collage -->
+        <section class="collage-section">
+            <h2 class="section-heading">Merch & Branding <span style="color: var(--text-secondary); font-weight: 400;">Showcase</span></h2>
+            
+            <div class="collage-grid">
+                <!-- Large Featured Image (e.g., Lanyard/T-shirt Mockup) -->
+                <div class="collage-item item-large">
+                    <!-- Placeholder: Replace src with your actual Merch image -->
+                    <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=1600&auto=format&fit=crop" alt="Merch Design">
+                    <div class="overlay">
+                        <h4>Official Sci-Mat Team Lanyards & ID Badges</h4>
+                    </div>
+                </div>
+
+                <!-- Tall Image (e.g., Event Poster) -->
+                <div class="collage-item item-tall">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop" alt="Abstract Poster">
+                    <div class="overlay">
+                        <h4>Surge 2.0 Branding Concept</h4>
+                    </div>
+                </div>
+
+                <!-- Wide Box (e.g., Social Media Banner) -->
+                <div class="collage-item item-wide">
+                    <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1000&auto=format&fit=crop" alt="Social Banner">
+                    <div class="overlay">
+                        <h4>Instagram Campaign Assets</h4>
+                    </div>
+                </div>
+
+                <!-- Small Box (e.g., Logo Close-up) -->
+                <div class="collage-item item-box">
+                    <img src="https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?q=80&w=800&auto=format&fit=crop" alt="3D Logo Design">
+                    <div class="overlay">
+                        <h4>3D Symbol Integration</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Clickable Event Highlights -->
+        <section class="events-section">
+            <h2 class="section-heading">Flagship <span class="gradient-text">Events</span></h2>
+            <div class="events-grid">
+                
+                <div class="event-card">
+                    <h3>Surge 2.0</h3>
+                    <p>Designed the complete branding toolkit for this flagship technical summit, including a highly detailed, 3D symbol-based logo instead of a traditional text logo. Created assets for the KBC Challenge and CTF.</p>
+                    <a href="#" class="btn-outline">View Event Details <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <div class="event-card">
+                    <h3>Open SOURCERY</h3>
+                    <p>Designed the visual roadmap and promotional materials for this 5-part intensive workshop series covering Git, GitHub, and Open Source contributions.</p>
+                    <a href="#" class="btn-outline">View Assets <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <div class="event-card">
+                    <h3>Sci-Mat x Savera Initiative</h3>
+                    <p>Collaborated across clubs to design accessible, engaging visual materials and email templates for our joint digital safety and cybersecurity awareness program.</p>
+                    <a href="#" class="btn-outline">View Campaign <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p style="text-align: center; color: var(--text-secondary); padding: 2rem 0; border-top: 1px solid var(--border);">
+                © 2026 Bhavesh Gupta.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
