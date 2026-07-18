@@ -187,6 +187,12 @@
             transition: 0.3s;
         }
         .nav-links a:hover { color: var(--text-primary); }
+        .nav-links a.nav-photo-link {
+            color: var(--accent-2);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
         .mobile-toggle { display: none; background: transparent; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
 
         /* Hero Section */
@@ -237,16 +243,43 @@
             color: #fff;
             box-shadow: 0 8px 25px -8px rgba(139, 92, 246, 0.5);
         }
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px -6px rgba(139, 92, 246, 0.7);
+        @media (hover: hover) and (pointer: fine) {
+            .btn-primary:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 12px 30px -6px rgba(139, 92, 246, 0.7);
+            }
         }
         .btn-secondary {
             background: var(--surface);
             border-color: var(--border);
             color: var(--text-primary);
         }
-        .btn-secondary:hover { background: var(--surface-hover); border-color: var(--border-hover); transform: translateY(-3px); }
+        @media (hover: hover) and (pointer: fine) {
+            .btn-secondary:hover { background: var(--surface-hover); border-color: var(--border-hover); transform: translateY(-3px); }
+        }
+
+        /* Photography toggle pill in hero */
+        .photo-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-top: 1.75rem;
+            padding: 0.7rem 1.3rem;
+            border-radius: 50px;
+            background: rgba(236, 72, 153, 0.1);
+            border: 1px solid rgba(236, 72, 153, 0.3);
+            color: var(--accent-pink);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .photo-toggle i { font-size: 0.95rem; }
+        @media (hover: hover) and (pointer: fine) {
+            .photo-toggle:hover {
+                background: rgba(236, 72, 153, 0.18);
+                border-color: var(--accent-pink);
+                transform: translateY(-2px);
+            }
+        }
         
         .avatar-wrapper {
             position: relative;
@@ -287,7 +320,9 @@
             color: var(--text-secondary);
             transition: 0.3s;
         }
-        .social-links a:hover { background: var(--surface-hover); color: var(--text-primary); border-color: var(--accent-1); transform: translateY(-3px); }
+        @media (hover: hover) and (pointer: fine) {
+            .social-links a:hover { background: var(--surface-hover); color: var(--text-primary); border-color: var(--accent-1); transform: translateY(-3px); }
+        }
 
         /* Section Titles */
         .section-header {
@@ -338,13 +373,20 @@
             opacity: 0;
             transition: opacity 0.3s;
         }
-        a.exp-card:hover {
-            background: var(--surface-hover);
-            border-color: var(--border-hover);
-            transform: translateY(-4px);
-            box-shadow: var(--shadow);
+        @media (hover: hover) and (pointer: fine) {
+            a.exp-card:hover {
+                background: var(--surface-hover);
+                border-color: var(--border-hover);
+                transform: translateY(-4px);
+                box-shadow: var(--shadow);
+            }
+            a.exp-card:hover::before { opacity: 1; }
+            a.exp-card:hover .exp-icon {
+                background: rgba(6, 182, 212, 0.1);
+                color: #fff;
+                border-color: var(--accent-2);
+            }
         }
-        a.exp-card:hover::before { opacity: 1; }
         
         .exp-icon {
             width: 60px; height: 60px;
@@ -354,11 +396,7 @@
             display: flex; align-items: center; justify-content: center;
             font-size: 1.5rem;
             color: var(--accent-2);
-        }
-        a.exp-card:hover .exp-icon {
-            background: rgba(6, 182, 212, 0.1);
-            color: #fff;
-            border-color: var(--accent-2);
+            flex-shrink: 0;
         }
         .exp-info h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.2rem; }
         .exp-info h4 { color: var(--accent-1); font-weight: 600; font-size: 0.9rem; margin-bottom: 0.8rem; }
@@ -383,6 +421,7 @@
             font-weight: 700;
             border: 1px solid rgba(16, 185, 129, 0.2);
             align-self: start;
+            white-space: nowrap;
         }
 
         #github {
@@ -445,7 +484,7 @@
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
-            cursor: default;
+            cursor: pointer;
             perspective: 800px; /* For 3D Tilt */
         }
         
@@ -454,8 +493,10 @@
             background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(6, 182, 212, 0.02));
             border-color: rgba(139, 92, 246, 0.15);
         }
-        .project-card.featured:hover {
-            border-color: rgba(139, 92, 246, 0.6);
+        @media (hover: hover) and (pointer: fine) {
+            .project-card.featured:hover {
+                border-color: rgba(139, 92, 246, 0.6);
+            }
         }
 
         /* Pseudo for Rotating Glowing Border */
@@ -486,13 +527,15 @@
             z-index: -1;
         }
 
-        .project-card:hover {
-            transform: translateY(-8px) scale(1.02) rotateX(2deg) rotateY(4deg);
-            box-shadow: 0 20px 40px -12px rgba(139, 92, 246, 0.4);
-            border-color: transparent;
-        }
-        .project-card:hover::before {
-            opacity: 1;
+        @media (hover: hover) and (pointer: fine) {
+            .project-card:hover {
+                transform: translateY(-8px) scale(1.02) rotateX(2deg) rotateY(4deg);
+                box-shadow: 0 20px 40px -12px rgba(139, 92, 246, 0.4);
+                border-color: transparent;
+            }
+            .project-card:hover::before {
+                opacity: 1;
+            }
         }
 
         .project-top {
@@ -511,9 +554,11 @@
             color: var(--accent-1);
             border: 1px solid var(--border);
         }
-        .project-card:hover .project-icon { 
-            background: rgba(139, 92, 246, 0.1); 
-            color: #fff; 
+        @media (hover: hover) and (pointer: fine) {
+            .project-card:hover .project-icon { 
+                background: rgba(139, 92, 246, 0.1); 
+                color: #fff; 
+            }
         }
         .project-external {
             width: 40px; height: 40px;
@@ -523,12 +568,16 @@
             color: var(--text-secondary);
             border: 1px solid var(--border);
             transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            z-index: 2;
         }
-        .project-card:hover .project-external { 
-            background: var(--accent-1); 
-            color: #fff; 
-            border-color: var(--accent-1);
-            transform: translateY(-3px) scale(1.1);
+        @media (hover: hover) and (pointer: fine) {
+            .project-card:hover .project-external { 
+                background: var(--accent-1); 
+                color: #fff; 
+                border-color: var(--accent-1);
+                transform: translateY(-3px) scale(1.1);
+            }
         }
         
         .project-content h3 { font-size: 1.35rem; font-weight: 700; margin-bottom: 0.6rem; z-index: 1; position: relative; }
@@ -546,9 +595,25 @@
         }
         .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
         .project-tags span { font-size: 0.75rem; font-weight: 600; color: var(--text-secondary); background: rgba(255,255,255,0.03); padding: 0.2rem 0.6rem; border-radius: 6px; border: 1px solid var(--border); }
-        .project-links { display: flex; gap: 1rem; }
+        .project-links { display: flex; gap: 1rem; position: relative; z-index: 2; }
         .project-links a { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); display: flex; align-items: center; gap: 0.4rem; }
         .project-links a:hover { color: var(--accent-1); }
+        .project-card-hint {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.2rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+            opacity: 0;
+            transition: 0.3s;
+            z-index: 1;
+        }
+        @media (hover: hover) and (pointer: fine) {
+            .project-card:hover .project-card-hint { opacity: 0.6; }
+        }
 
         /* Skills Section (Dark Theme Consistent) */
         #skills{
@@ -576,10 +641,12 @@
     backdrop-filter:blur(15px);
 }
 
-.skill-card:hover{
-    transform:translateY(-8px);
-    border-color:var(--accent);
-    box-shadow:0 20px 45px rgba(0,255,255,.12);
+@media (hover: hover) and (pointer: fine) {
+    .skill-card:hover{
+        transform:translateY(-8px);
+        border-color:var(--accent-2);
+        box-shadow:0 20px 45px rgba(0,255,255,.12);
+    }
 }
 
 .skill-card img{
@@ -588,10 +655,16 @@
     object-fit:contain;
 }
 
+.skill-card i.skill-icon {
+    font-size: 48px;
+    color: var(--accent-2);
+}
+
 .skill-card span{
     font-size:.95rem;
     font-weight:600;
     color:var(--text-primary);
+    text-align: center;
 }
 
         /* Grid Positioning Classes */
@@ -677,13 +750,34 @@
             .hero p { margin: 0 auto 2rem; }
             .hero-cta { justify-content: center; }
             .social-links { justify-content: center; }
+            .photo-toggle { margin-left: auto; margin-right: auto; }
             .projects-grid { grid-template-columns: 1fr; }
             .project-card.featured { grid-column: span 1; }
-            .exp-card { grid-template-columns: 1fr; gap: 1rem; text-align: center; }
+
+            a.exp-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 1.75rem 1.5rem;
+                gap: 1rem;
+            }
             .exp-icon { margin: 0 auto; }
             .exp-tags { justify-content: center; }
             .exp-badge { margin: 0 auto; }
-            .skills-grid { grid-template-columns: 1fr; }
+
+            .skills-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1rem;
+                margin-top: 2.5rem;
+            }
+            .skill-card {
+                padding: 1.8rem 1rem;
+                gap: 1rem;
+                border-radius: 18px;
+            }
+            .skill-card img { width: 42px; height: 42px; }
+            .skill-card i.skill-icon { font-size: 42px; }
+            .skill-card span { font-size: 0.95rem; }
+
             .nav-links { display: none; flex-direction: column; background: var(--surface); position: absolute; top: 100%; left: 0; width: 100%; padding: 2rem; border-bottom: 1px solid var(--border); }
             .nav-links.active { display: flex; }
             .mobile-toggle { display: block; }
@@ -709,6 +803,19 @@
         }
 
         @media (max-width: 480px) {
+            .skills-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.8rem;
+            }
+            .skill-card {
+                padding: 1.5rem 0.75rem;
+                gap: 0.8rem;
+                border-radius: 16px;
+            }
+            .skill-card img { width: 36px; height: 36px; }
+            .skill-card i.skill-icon { font-size: 36px; }
+            .skill-card span { font-size: 0.85rem; }
+
             .arsenal-collage {
                 gap: 0.8rem;
                 grid-auto-rows: minmax(100px, auto);
@@ -741,8 +848,9 @@
                 <ul class="nav-links">
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#projects">Work</a></li>
-                    <li><a href="#skills-arsenal">Skills</a></li>
+                    <li><a href="#skills">Skills</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <li><a href="photography.html" class="nav-photo-link"><i class="fa-solid fa-camera"></i> Photography</a></li>
                 </ul>
             </nav>
         </div>
@@ -755,11 +863,9 @@
                 <div class="hero-grid">
                     <div class="hero-content reveal">
                        
-                        <h1>Crafting Data-Driven <br><span class="gradient-text"> Applications.</span></h1>
+                        <h1> <br><span class="gradient-text"> Hello</span></h1>
                         <p>
-                            I'm <strong>Bhavesh Gupta</strong>, a B.Tech Computer Science student specializing in full-stack development, 
-                            interactive user interfaces, and scalable real-world systems.
-                        </p>
+                            I'm <strong>Bhavesh Gupta</strong>, a B.Tech Computer Science student specializing in full-stack development                        </p>
                         <div class="hero-cta">
                             <a href="#projects" class="btn btn-primary">
                                 Explore Work <i class="fa-solid fa-arrow-right"></i>
@@ -774,6 +880,9 @@
                             <a href="https://x.com/Bhavesh12g" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
                             <a href="https://www.instagram.com/bhavesh12z/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
                         </div>
+                        <a href="https://lensofbhavipage.vercel.app/" class="photo-toggle" style="color: var(--white); border-color: rgba(0, 0, 0, 0.3); background: rgba(255, 255, 255, 0.1);">
+                            <i class="fa-solid fa-camera"> </i> My Gallery
+                        </a>
                     </div>
                     <div class="hero-visual reveal" style="transition-delay: 0.2s;">
                         <div class="avatar-wrapper">
@@ -789,14 +898,14 @@
         <section id="experience">
             <div class="container">
                 <div class="section-header reveal">
-                    <span class="section-subtitle">Track Record</span>
-                    <h2 class="section-title">Experience & <span class="gradient-text">Activities</span></h2>
+                  
+                    <h2 class="section-title">Experience </h2>
                 </div>
                 
                 <div class="exp-grid">
                     <!-- Item 1: C-DOT -->
                     <a href="experience-cdot.html" class="exp-card reveal">
-                        <div class="exp-icon"></div>
+                        <div class="exp-icon"><i class="fa-solid fa-shield-halved"></i></div>
                         <div class="exp-info">
                             <h3>Tech Intern</h3>
                             <h4>C-DOT • June 2026 - July 2026</h4>
@@ -810,7 +919,7 @@
 
                     <!-- Item 2: Sci-Mat -->
                     <a href="experience-scimat.html" class="exp-card reveal" style="transition-delay: 0.1s;">
-                        <div class="exp-icon"></div>
+                        <div class="exp-icon"><i class="fa-solid fa-palette"></i></div>
                         <div class="exp-info">
                             <h3>Design Lead</h3>
                             <h4>Sci-Mat BMU • Aug 2025 - May 2026</h4>
@@ -850,15 +959,16 @@
         </section>
 
         <!-- Projects Section (Dynamic UI) -->
-        <section id="projects">
+  <section id="projects">
             <div class="container">
                 <div class="section-header reveal">
                     <span class="section-subtitle">Portfolio</span>
                     <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
                 </div>
-
+ 
                 <div class="projects-grid">
-                    <div class="project-card featured reveal">
+                    <div class="project-card featured reveal" data-href="project-quizit.html">
+                        <span class="project-card-hint">View project <i class="fa-solid fa-arrow-right"></i></span>
                         <div>
                             <div class="project-top">
                                 <div class="project-icon"><i class="fa-solid fa-circle-question"></i></div>
@@ -879,8 +989,9 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="project-card reveal" style="transition-delay: 0.1s;">
+ 
+                    <div class="project-card reveal" style="transition-delay: 0.1s;" data-href="project-cafe-sales.html">
+                        <span class="project-card-hint">View project <i class="fa-solid fa-arrow-right"></i></span>
                         <div>
                             <div class="project-top">
                                 <div class="project-icon"><i class="fa-solid fa-chart-pie"></i></div>
@@ -900,8 +1011,9 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="project-card reveal" style="transition-delay: 0.2s;">
+ 
+                    <div class="project-card reveal" style="transition-delay: 0.2s;" data-href="project-ethylene-adsorber.html">
+                        <span class="project-card-hint">View project <i class="fa-solid fa-arrow-right"></i></span>
                         <div>
                             <div class="project-top">
                                 <div class="project-icon"><i class="fa-solid fa-microchip"></i></div>
@@ -921,8 +1033,9 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="project-card reveal" style="transition-delay: 0.3s;">
+ 
+                    <div class="project-card reveal" style="transition-delay: 0.3s;" data-href="project-eduquest.html">
+                        <span class="project-card-hint">View project <i class="fa-solid fa-arrow-right"></i></span>
                         <div>
                             <div class="project-top">
                                 <div class="project-icon"><i class="fa-solid fa-graduation-cap"></i></div>
@@ -942,10 +1055,124 @@
                             </div>
                         </div>
                     </div>
+ 
+                    <div class="project-card reveal" data-href="project-bughunt.html">
+                        <span class="project-card-hint">View project <i class="fa-solid fa-arrow-right"></i></span>
+                        <div>
+                            <div class="project-top">
+                                <div class="project-icon"><i class="fa-solid fa-bug"></i></div>
+                                <a href="#" target="_blank" class="project-external"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            </div>
+                            <div class="project-content">
+                                <h3>BugHunt</h3>
+                                <p>A browser-based multiplayer platform delivering real-time gameplay, custom rooms, and smooth interactive experiences across devices.</p>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <div class="project-tags">
+                                <span>React</span><span>Node.js</span><span>Socket.io</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
+                                <a href="#" target="_blank"><i class="fa-solid fa-globe"></i> Live</a>
+                            </div>
+                        </div>
+                    </div>
+ 
+                    <div class="project-card reveal" data-href="project-farmlink.html">
+                        <span class="project-card-hint">View project <i class="fa-solid fa-arrow-right"></i></span>
+                        <div>
+                            <div class="project-top">
+                                <div class="project-icon"><i class="fa-solid fa-seedling"></i></div>
+                                <a href="#" target="_blank" class="project-external"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            </div>
+                            <div class="project-content">
+                                <h3>FarmLink</h3>
+                                <p>A browser-based multiplayer platform delivering real-time gameplay, custom rooms, and smooth interactive experiences across devices.</p>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <div class="project-tags">
+                                <span>React</span><span>Node.js</span><span>Socket.io</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
+                                <a href="#" target="_blank"><i class="fa-solid fa-globe"></i> Live</a>
+                            </div>
+                        </div>
+                    </div>
+ 
+                    <div class="project-card reveal" data-href="project-pohahub.html">
+                        <span class="project-card-hint">View project <i class="fa-solid fa-arrow-right"></i></span>
+                        <div>
+                            <div class="project-top">
+                                <div class="project-icon"><i class="fa-solid fa-gamepad"></i></div>
+                                <a href="https://pohahub.vercel.app" target="_blank" class="project-external"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            </div>
+                            <div class="project-content">
+                                <h3>POHAHUB</h3>
+                                <p>A browser-based multiplayer platform delivering real-time gameplay, custom rooms, and smooth interactive experiences across devices.</p>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <div class="project-tags">
+                                <span>React</span><span>Node.js</span><span>Socket.io</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
+                                <a href="https://pohahub.vercel.app" target="_blank"><i class="fa-solid fa-globe"></i> Live</a>
+                            </div>
+                        </div>
+                    </div>
+ 
+                    <div class="project-card reveal" data-href="project-sketchcafe.html">
+                        <span class="project-card-hint">View project <i class="fa-solid fa-arrow-right"></i></span>
+                        <div>
+                            <div class="project-top">
+                                <div class="project-icon"><i class="fa-solid fa-pen-nib"></i></div>
+                                <a href="#" target="_blank" class="project-external"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            </div>
+                            <div class="project-content">
+                                <h3>SketchCafe</h3>
+                                <p>A browser-based multiplayer platform delivering real-time gameplay, custom rooms, and smooth interactive experiences across devices.</p>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <div class="project-tags">
+                                <span>React</span><span>Node.js</span><span>Socket.io</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
+                                <a href="#" target="_blank"><i class="fa-solid fa-globe"></i> Live</a>
+                            </div>
+                        </div>
+                    </div>
+ 
+                    <div class="project-card reveal" data-href="project-mangaverse.html">
+                        <span class="project-card-hint">View project <i class="fa-solid fa-arrow-right"></i></span>
+                        <div>
+                            <div class="project-top">
+                                <div class="project-icon"><i class="fa-solid fa-book-open"></i></div>
+                                <a href="#" target="_blank" class="project-external"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            </div>
+                            <div class="project-content">
+                                <h3>Manga</h3>
+                                <p>A browser-based multiplayer platform delivering real-time gameplay, custom rooms, and smooth interactive experiences across devices.</p>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <div class="project-tags">
+                                <span>React</span><span>Node.js</span><span>Socket.io</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
+                                <a href="#" target="_blank"><i class="fa-solid fa-globe"></i> Live</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-
         <section id="skills">
     <div class="container">
 
@@ -1140,6 +1367,15 @@
         }, { threshold: 0.1 });
 
         document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+        // Make project cards clickable -> dedicated project pages
+        // (clicks on inner links like GitHub/Live/external icon still work normally)
+        document.querySelectorAll('.project-card[data-href]').forEach((card) => {
+            card.addEventListener('click', (e) => {
+                if (e.target.closest('a')) return; // let inner links behave normally
+                window.location.href = card.dataset.href;
+            });
+        });
     </script>
 </body>
 </html>
